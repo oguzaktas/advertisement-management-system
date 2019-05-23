@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_database"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".Database">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/firebase"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:paddingTop="8dp" />
+
+    <Button
+        android:id="@+id/database_btn_reklam"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinnerCategory"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:background="#263238"
+        android:gravity="center"
+        android:text="Reklam Ekle" />
+
+    <TextView
+        android:layout_below="@+id/database_btn_reklam"
+        android:id="@+id/database_btn_back"
+        android:layout_centerHorizontal="true"
+        android:text="Geri Don"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/colorPrimaryDark"
+        />
+
+    <EditText
+        android:id="@+id/editTextFirmaAdi"
+        android:layout_below="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Firma Adi"
+        android:paddingBottom="12dp"
+        android:paddingTop="20dp" />
+
+    <EditText
+        android:id="@+id/editTextLokasyon"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/editTextFirmaAdi"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Lokasyon"
+        android:paddingBottom="12dp" />
+
+    <EditText
+        android:id="@+id/editTextKampanyaIcerik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/editTextLokasyon"
+        android:ems="10"
+        android:hint="Kampanya Icerik"
+        android:paddingBottom="12dp" />
+
+    <EditText
+        android:id="@+id/editTextKampanyaSuresi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/editTextKampanyaIcerik"
+        android:ems="10"
+        android:hint="Kampanya Suresi"
+        android:paddingBottom="12dp" />
+
+    <Spinner
+        android:id="@+id/spinnerCategory"
+        android:layout_below="@+id/editTextKampanyaSuresi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Kategori"
+        android:paddingTop="12dp"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:id="@+id/textViewCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextKampanyaSuresi"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:paddingTop="12dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="60dp"
+        android:textStyle="bold"
+        android:text="Kategori " />
+
+</RelativeLayout>
