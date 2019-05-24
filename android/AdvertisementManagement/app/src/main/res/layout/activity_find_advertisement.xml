@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_find_advertisement"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".FindAdvertisement">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/firebase"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:paddingTop="8dp" />
+
+    <TextView
+        android:id="@+id/reklam_welcome"
+        android:layout_below="@+id/icon"
+        android:layout_centerHorizontal="true"
+        android:text="Hosgeldiniz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <Button
+        android:layout_below="@+id/reklam_welcome"
+        android:id="@+id/reklam_btn_location"
+        android:text="GPS Uzerinden Lokasyonumu Bul"
+        android:gravity="center"
+        android:background="#263238"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textViewLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/reklam_btn_location"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:textStyle="bold"
+        android:text="Latitude ve Longitude: " />
+
+    <EditText
+        android:layout_marginTop="15dp"
+        android:id="@+id/reklam_new_lat"
+        android:layout_below="@+id/textViewLocation"
+        android:hint="Yeni latitude"
+        android:inputType="text"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:maxLines="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/reklam_new_long"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reklam_new_lat"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:hint="Yeni longitude"
+        android:inputType="text"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/reklam_mesafe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reklam_new_long"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:hint="Mesafe"
+        android:inputType="text"
+        android:maxLines="1" />
+
+    <Button
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/reklam_mesafe"
+        android:id="@+id/reklam_btn_find"
+        android:gravity="center"
+        android:text="Reklam Bul"
+        android:background="#263238"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_below="@+id/reklam_btn_find"
+        android:id="@+id/reklam_btn_back"
+        android:layout_centerHorizontal="true"
+        android:text="Geri Don"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/colorPrimaryDark" />
+
+</RelativeLayout>

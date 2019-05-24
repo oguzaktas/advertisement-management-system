@@ -54,13 +54,23 @@
         android:paddingTop="20dp" />
 
     <EditText
-        android:id="@+id/editTextLokasyon"
+        android:id="@+id/editTextLatitude"
         android:layout_width="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/editTextFirmaAdi"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Lokasyon"
+        android:hint="Lokasyon Latitude"
+        android:paddingBottom="12dp" />
+
+    <EditText
+        android:id="@+id/editTextLongitude"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/editTextLatitude"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Lokasyon Longitude"
         android:paddingBottom="12dp" />
 
     <EditText
@@ -68,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editTextLokasyon"
+        android:layout_below="@+id/editTextLongitude"
         android:ems="10"
         android:hint="Kampanya Icerik"
         android:paddingBottom="12dp" />

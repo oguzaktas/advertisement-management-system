@@ -10,7 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".DashBoard">
 
-
     <ImageView
         android:id="@+id/icon"
         android:layout_alignParentTop="true"
@@ -21,28 +20,29 @@
         android:paddingTop="8dp" />
 
     <TextView
-        android:layout_below="@+id/icon"
         android:id="@+id/dashboard_welcome"
+        android:layout_below="@+id/icon"
         android:layout_centerHorizontal="true"
         android:text="Hosgeldiniz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:textColor="@color/colorPrimaryDark"
-        />
+        android:textColor="@color/colorPrimaryDark" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_below="@+id/dashboard_welcome"
         android:id="@+id/dashboard_input_new_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
-        >
+        android:paddingBottom="8dp" >
 
         <EditText
             android:id="@+id/dashboard_new_password"
             android:hint="Yeni sifrenizi giriniz"
             android:inputType="textPassword"
+            android:gravity="center"
+            android:layout_centerInParent="true"
             android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -60,24 +60,36 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/dashboard_btn_change_pass"
-        android:id="@+id/dashboard_btn_logout"
+        android:id="@+id/dashboard_btn_reklam"
         android:gravity="center"
-        android:text="Cikis Yap"
-        android:background="#263238"
+        android:text="Lokasyona Gore Reklam Bul"
+        android:background="#007acc"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/dashboard_btn_logout"
+        android:layout_below="@+id/dashboard_btn_reklam"
         android:id="@+id/dashboard_btn_database"
-        android:text="Veritabanina Reklam Ekle"
+        android:text="Yeni Reklam Ekle"
         android:background="#5d7989"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/dashboard_btn_database"
+        android:id="@+id/dashboard_btn_logout"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:text="Cikis Yap"
+        android:background="#263238"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
