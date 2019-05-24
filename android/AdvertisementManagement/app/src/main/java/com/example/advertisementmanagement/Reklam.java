@@ -4,7 +4,8 @@ public class Reklam {
 
     private String firmaID;
     private String firmaAdi;
-    private String lokasyon;
+    private String latitude;
+    private String longitude;
     private String kampanyaIcerik;
     private String kampanyaSuresi;
     private String kategori;
@@ -13,10 +14,11 @@ public class Reklam {
 
     }
 
-    public Reklam(String firmaID, String firmaAdi, String lokasyon, String kampanyaIcerik, String kampanyaSuresi, String kategori) {
+    public Reklam(String firmaID, String firmaAdi, String latitude, String longitude, String kampanyaIcerik, String kampanyaSuresi, String kategori) {
         this.firmaID = firmaID;
         this.firmaAdi = firmaAdi;
-        this.lokasyon = lokasyon;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.kampanyaIcerik = kampanyaIcerik;
         this.kampanyaSuresi = kampanyaSuresi;
         this.kategori = kategori;
@@ -38,12 +40,20 @@ public class Reklam {
         this.firmaAdi = firmaAdi;
     }
 
-    public String getLokasyon() {
-        return lokasyon;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setLokasyon(String lokasyon) {
-        this.lokasyon = lokasyon;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public String getKampanyaIcerik() {
@@ -67,6 +77,6 @@ public class Reklam {
     }
 
     public void setKategori(String kategori) {
-        this.kampanyaSuresi = kategori;
+        this.kategori = kategori;
     }
 }

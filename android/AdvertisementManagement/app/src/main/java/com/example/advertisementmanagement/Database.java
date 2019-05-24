@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Database extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
-    private EditText editTextFirmaAdi, editTextLokasyon, editTextKampanyaIcerik, editTextKampanyaSuresi;
+    private EditText editTextFirmaAdi, editTextLatitude, editTextLongitude, editTextKampanyaIcerik, editTextKampanyaSuresi;
     private Button btnReklam;
     private RelativeLayout activity_database;
     private TextView btnBack;
@@ -36,7 +36,8 @@ public class Database extends AppCompatActivity implements View.OnClickListener,
         databaseReklam = FirebaseDatabase.getInstance().getReference("reklam");
 
         editTextFirmaAdi = (EditText) findViewById(R.id.editTextFirmaAdi);
-        editTextLokasyon = (EditText) findViewById(R.id.editTextLokasyon);
+        editTextLatitude = (EditText) findViewById(R.id.editTextLatitude);
+        editTextLongitude = (EditText) findViewById(R.id.editTextLongitude);
         editTextKampanyaIcerik = (EditText) findViewById(R.id.editTextKampanyaIcerik);
         editTextKampanyaSuresi = (EditText) findViewById(R.id.editTextKampanyaSuresi);
         btnReklam = (Button) findViewById(R.id.database_btn_reklam);
@@ -65,14 +66,16 @@ public class Database extends AppCompatActivity implements View.OnClickListener,
 
     private void addAdvertisement() {
         String firmaAdi = editTextFirmaAdi.getText().toString().trim();
-        String lokasyon = editTextLokasyon.getText().toString().trim();
+        String latitude = editTextLatitude.getText().toString().trim();
+        String longitude = editTextLongitude.getText().toString().trim();
         String kampanyaIcerik = editTextKampanyaIcerik.getText().toString().trim();
         String kampanyaSuresi = editTextKampanyaSuresi.getText().toString().trim();
 
-        if (!TextUtils.isEmpty(firmaAdi) && !TextUtils.isEmpty(lokasyon) && !TextUtils.isEmpty(kampanyaIcerik) && !TextUtils.isEmpty(kampanyaSuresi)) {
+        if (!TextUtils.isEmpty(firmaAdi) && !TextUtils.isEmpty(latitude) && !TextUtils.isEmpty(longitude) &&
+                !TextUtils.isEmpty(kampanyaIcerik) && !TextUtils.isEmpty(kampanyaSuresi)) {
 
             String reklamID = databaseReklam.push().getKey(); // Unique ID
-            Reklam reklam = new Reklam(reklamID, firmaAdi, lokasyon, kampanyaIcerik, kampanyaSuresi, category);
+            Reklam reklam = new Reklam(reklamID, firmaAdi, latitude, longitude, kampanyaIcerik, kampanyaSuresi, category);
             databaseReklam.child(reklamID).setValue(reklam);
 
             Snackbar snackBar = Snackbar.make(activity_database, "Reklam basariyla eklendi.", Snackbar.LENGTH_SHORT);

@@ -24,7 +24,7 @@ public class DashBoard extends AppCompatActivity implements View.OnClickListener
 
     private TextView txtWelcome;
     private EditText input_new_password;
-    private Button btnChangePass,btnLogout, btnDatabase;
+    private Button btnChangePass,btnLogout, btnDatabase, btnReklam;
     private RelativeLayout activity_dashboard;
 
     private FirebaseAuth auth;
@@ -40,11 +40,13 @@ public class DashBoard extends AppCompatActivity implements View.OnClickListener
         btnChangePass = (Button)findViewById(R.id.dashboard_btn_change_pass);
         btnLogout = (Button)findViewById(R.id.dashboard_btn_logout);
         btnDatabase = (Button)findViewById(R.id.dashboard_btn_database);
+        btnReklam = (Button)findViewById(R.id.dashboard_btn_reklam);
         activity_dashboard = (RelativeLayout)findViewById(R.id.activity_dash_board);
 
         btnChangePass.setOnClickListener(this);
         btnLogout.setOnClickListener(this);
         btnDatabase.setOnClickListener(this);
+        btnReklam.setOnClickListener(this);
 
         //Init Firebase
         auth = FirebaseAuth.getInstance();
@@ -71,6 +73,9 @@ public class DashBoard extends AppCompatActivity implements View.OnClickListener
         }
         else if(view.getId() == R.id.dashboard_btn_database) {
             openDatabase();
+        }
+        else if(view.getId() == R.id.dashboard_btn_reklam) {
+            openReklam();
         }
     }
 
@@ -99,6 +104,11 @@ public class DashBoard extends AppCompatActivity implements View.OnClickListener
 
     private void openDatabase() {
         startActivity(new Intent(DashBoard.this, Database.class));
+        finish();
+    }
+
+    private void openReklam() {
+        startActivity(new Intent(DashBoard.this, FindAdvertisement.class));
         finish();
     }
 }
