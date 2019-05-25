@@ -1,6 +1,7 @@
 package com.example.advertisementmanagement;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 
@@ -16,6 +17,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -38,7 +41,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+public class MapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, View.OnClickListener     {
 
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
@@ -47,12 +50,17 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     private Marker currentUserLocationMarker;
     private static final int REQUEST_USER_LOCATION_CODE = 99;
 
+    private TextView btnBack;
+
     private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
+        btnBack = (TextView) findViewById(R.id.map_btn_back);
+        btnBack.setOnClickListener(this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkUserLocationPermission();
@@ -62,6 +70,20 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == R.id.map_btn_back) {
+            // startActivity(new Intent(MapActivity.this, FindAdvertisement.class));
+            Intent intent = new Intent(MapActivity.this, FindAdvertisement.class);
+            Bundle b = new Bundle();
+            b.putString("latitude", String.valueOf(mLastLocation.getLatitude()));
+            b.putString("longitude", String.valueOf(mLastLocation.getLongitude()));
+            intent.putExtras(b);
+            startActivity(intent);
+            finish();
+        }
     }
 
     /**

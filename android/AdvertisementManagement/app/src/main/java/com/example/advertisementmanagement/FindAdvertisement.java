@@ -31,7 +31,8 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
 
     private LocationManager locationManager;
 
-    private FusedLocationProviderClient mClient;
+    private String latitude = null;
+    private String longitude = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +74,10 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
         }
         Location location = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);
         onLocationChanged(location);
+        getLocation();
+        if (latitude != null && longitude != null) {
+            txtLatLong.setText("Latitude: " + latitude + ", Longitude: " + longitude);
+        }
     }
 
     @Override
@@ -88,8 +93,12 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
         }
     }
 
-    private void findLocation() {
-
+    private void getLocation() {
+        Bundle b = getIntent().getExtras();
+        if (b != null) {
+            latitude = b.getString("latitude");
+            longitude = b.getString("longitude");
+        }
     }
 
     private void findLocation(String latlong) {
