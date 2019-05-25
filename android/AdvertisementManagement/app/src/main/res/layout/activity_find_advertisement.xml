@@ -8,17 +8,8 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_horizontal_margin"
     tools:context=".FindAdvertisement">
-
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/firebase"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:paddingTop="8dp" />
 
     <TextView
         android:id="@+id/reklam_welcome"
@@ -27,14 +18,15 @@
         android:text="Hosgeldiniz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="8dp"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:textColor="@color/colorPrimaryDark" />
 
     <Button
         android:layout_below="@+id/reklam_welcome"
         android:id="@+id/reklam_btn_location"
-        android:text="GPS Uzerinden Lokasyonumu Bul"
+        android:text="GPS Uzerinden Lokasyonumu Tespit Et"
         android:gravity="center"
         android:background="#263238"
         style="@style/Widget.AppCompat.Button.Colored"
@@ -48,52 +40,120 @@
         android:gravity="center"
         android:layout_centerInParent="true"
         android:layout_below="@+id/reklam_btn_location"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
+        android:maxLines="3"
         android:textStyle="bold"
-        android:text="Latitude ve Longitude: " />
+        android:textSize="16dp"
+        android:text="Lokasyon Bilgileri" />
 
-    <EditText
-        android:layout_marginTop="15dp"
-        android:id="@+id/reklam_new_lat"
+    <android.support.design.widget.TextInputLayout
         android:layout_below="@+id/textViewLocation"
-        android:hint="Yeni latitude"
-        android:inputType="text"
+        android:id="@+id/reklam_input_new_lat"
         android:gravity="center"
-        android:layout_centerInParent="true"
-        android:maxLines="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_marginTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-    <EditText
-        android:id="@+id/reklam_new_long"
+        <EditText
+            android:layout_marginTop="15dp"
+            android:id="@+id/reklam_new_lat"
+            android:hint="Yeni latitude"
+            android:layout_centerHorizontal="true"
+            android:maxLines="1"
+            android:ems="10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_below="@+id/reklam_input_new_lat"
+        android:id="@+id/reklam_input_new_long"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/reklam_new_long"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="Yeni longitude"
+            android:inputType="text"
+            android:maxLines="1" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_below="@+id/reklam_input_new_long"
+        android:id="@+id/reklam_input_mesafe"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/reklam_mesafe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="Mesafe"
+            android:inputType="text"
+            android:maxLines="1" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_below="@+id/reklam_input_mesafe"
+        android:id="@+id/reklam_input_firma"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/reklam_firma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="Magaza Adi"
+            android:inputType="text"
+            android:maxLines="1" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/spinnerCategory"
+        android:layout_below="@+id/reklam_input_firma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/reklam_new_lat"
-        android:gravity="center"
-        android:layout_centerInParent="true"
-        android:hint="Yeni longitude"
-        android:inputType="text"
-        android:maxLines="1" />
+        android:text="Kategori"
+        android:paddingTop="14dp"
+        android:paddingLeft="150dp"
+        android:paddingBottom="10dp" />
 
-    <EditText
-        android:id="@+id/reklam_mesafe"
+    <TextView
+        android:id="@+id/textViewCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/reklam_new_long"
-        android:gravity="center"
-        android:layout_centerInParent="true"
-        android:hint="Mesafe"
-        android:inputType="text"
-        android:maxLines="1" />
+        android:layout_below="@+id/reklam_input_firma"
+        android:ems="10"
+        android:paddingTop="15dp"
+        android:paddingLeft="80dp"
+        android:paddingBottom="10dp"
+        android:textStyle="bold"
+        android:text="Kategori " />
 
     <Button
         android:layout_marginTop="15dp"
-        android:layout_below="@+id/reklam_mesafe"
+        android:layout_below="@+id/textViewCategory"
         android:id="@+id/reklam_btn_find"
         android:gravity="center"
         android:text="Reklam Bul"
-        android:background="#263238"
+        android:background="#5d7989"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

@@ -26,7 +26,7 @@ public class Database extends AppCompatActivity implements View.OnClickListener,
     private Spinner spnCategory;
     private String category;
 
-    DatabaseReference databaseReklam;
+    private DatabaseReference databaseReklam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,12 +78,10 @@ public class Database extends AppCompatActivity implements View.OnClickListener,
             Reklam reklam = new Reklam(reklamID, firmaAdi, latitude, longitude, kampanyaIcerik, kampanyaSuresi, category);
             databaseReklam.child(reklamID).setValue(reklam);
 
-            Snackbar snackBar = Snackbar.make(activity_database, "Reklam basariyla eklendi.", Snackbar.LENGTH_SHORT);
+            Snackbar snackBar = Snackbar.make(activity_database, "Reklam basariyla eklendi.", Snackbar.LENGTH_LONG);
             snackBar.show();
-
         } else {
-
-            Snackbar snackBar = Snackbar.make(activity_database, "Tum alanlari doldurduktan sonra tekrar deneyiniz.", Snackbar.LENGTH_SHORT);
+            Snackbar snackBar = Snackbar.make(activity_database, "Tum alanlari doldurduktan sonra tekrar deneyiniz.", Snackbar.LENGTH_LONG);
             snackBar.show();
         }
     }

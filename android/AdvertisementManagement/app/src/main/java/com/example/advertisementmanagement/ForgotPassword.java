@@ -67,11 +67,11 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful())
                         {
-                            Snackbar snackBar = Snackbar.make(activity_forgot,"Email adresine sifre gonderildi: "+email,Snackbar.LENGTH_SHORT);
+                            Snackbar snackBar = Snackbar.make(activity_forgot,"Email adresine sifre gonderildi: "+email,Snackbar.LENGTH_LONG);
                             snackBar.show();
                         }
                         else{
-                            Snackbar snackBar = Snackbar.make(activity_forgot,"Sifre gonderme islemi basarisiz",Snackbar.LENGTH_SHORT);
+                            Snackbar snackBar = Snackbar.make(activity_forgot,"Sifre gonderme islemi basarisiz",Snackbar.LENGTH_LONG);
                             snackBar.show();
                         }
                     }

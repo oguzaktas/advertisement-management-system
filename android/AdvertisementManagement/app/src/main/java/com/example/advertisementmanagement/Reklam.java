@@ -24,6 +24,15 @@ public class Reklam {
         this.kategori = kategori;
     }
 
+    public Reklam(String firmaAdi, String latitude, String longitude, String kampanyaIcerik, String kampanyaSuresi, String kategori) {
+        this.firmaAdi = firmaAdi;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.kampanyaIcerik = kampanyaIcerik;
+        this.kampanyaSuresi = kampanyaSuresi;
+        this.kategori = kategori;
+    }
+
     public String getFirmaID() {
         return firmaID;
     }

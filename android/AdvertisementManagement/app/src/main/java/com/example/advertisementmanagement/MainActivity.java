@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         {
                             if(password.length() < 6)
                             {
-                                Snackbar snackBar = Snackbar.make(activity_main,"Sifre uzunlugu 6'dan buyuk olmalidir",Snackbar.LENGTH_SHORT);
+                                Snackbar snackBar = Snackbar.make(activity_main,"Sifre uzunlugu 6'dan buyuk olmalidir",Snackbar.LENGTH_LONG);
                                 snackBar.show();
                             }
                         }

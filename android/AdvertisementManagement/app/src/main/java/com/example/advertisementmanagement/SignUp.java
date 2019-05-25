@@ -73,11 +73,11 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful())
                         {
-                            snackbar = Snackbar.make(activity_sign_up,"Hata: "+task.getException(),Snackbar.LENGTH_SHORT);
+                            snackbar = Snackbar.make(activity_sign_up,"Hata: "+task.getException(),Snackbar.LENGTH_LONG);
                             snackbar.show();
                         }
                         else{
-                            snackbar = Snackbar.make(activity_sign_up,"Kayit basarili! ",Snackbar.LENGTH_SHORT);
+                            snackbar = Snackbar.make(activity_sign_up,"Kayit basarili! ",Snackbar.LENGTH_LONG);
                             snackbar.show();
                         }
                     }

@@ -13,11 +13,13 @@ import com.google.android.gms.location.LocationListener;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +53,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
     private static final int REQUEST_USER_LOCATION_CODE = 99;
 
     private TextView btnBack;
+    private RelativeLayout activity_map;
 
     private FirebaseAuth auth;
 
@@ -59,6 +62,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
+        activity_map = (RelativeLayout) findViewById(R.id.activity_map);
         btnBack = (TextView) findViewById(R.id.map_btn_back);
         btnBack.setOnClickListener(this);
 
@@ -78,8 +82,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
             // startActivity(new Intent(MapActivity.this, FindAdvertisement.class));
             Intent intent = new Intent(MapActivity.this, FindAdvertisement.class);
             Bundle b = new Bundle();
-            b.putString("latitude", String.valueOf(mLastLocation.getLatitude()));
-            b.putString("longitude", String.valueOf(mLastLocation.getLongitude()));
+            b.putDouble("latitude", mLastLocation.getLatitude());
+            b.putDouble("longitude", mLastLocation.getLongitude());
             intent.putExtras(b);
             startActivity(intent);
             finish();
@@ -139,7 +143,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
                         mMap.setMyLocationEnabled(true);
                     }
                 } else {
-                    Toast.makeText(this, "Permission denied...", Toast.LENGTH_SHORT).show();
+                    Snackbar snackBar = Snackbar.make(activity_map, "Permission denied!", Snackbar.LENGTH_LONG);
+                    snackBar.show();
                 }
                 return;
         }
@@ -161,7 +166,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
         currentUserLocationMarker = mMap.addMarker(markerOptions);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomBy(12));
+        mMap.animateCamera(CameraUpdateFactory.zoomBy(10));
 
         /**
         String userId = auth.getCurrentUser().getUid();

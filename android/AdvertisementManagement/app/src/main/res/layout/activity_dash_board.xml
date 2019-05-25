@@ -62,18 +62,7 @@
         android:layout_below="@+id/dashboard_btn_change_pass"
         android:id="@+id/dashboard_btn_reklam"
         android:gravity="center"
-        android:text="Lokasyona Gore Reklam Ara"
-        android:background="#007acc"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/dashboard_btn_reklam"
-        android:id="@+id/dashboard_btn_reklamara"
-        android:gravity="center"
-        android:text="Kategoriye ve Magazaya Gore Reklam Ara"
+        android:text="Reklam Ara"
         android:background="#007acc"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
@@ -83,7 +72,7 @@
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/dashboard_btn_reklamara"
+        android:layout_below="@+id/dashboard_btn_reklam"
         android:id="@+id/dashboard_btn_database"
         android:text="Yeni Reklam Ekle"
         android:background="#5d7989"

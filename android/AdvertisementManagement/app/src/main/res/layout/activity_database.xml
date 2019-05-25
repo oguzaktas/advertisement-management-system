@@ -42,77 +42,116 @@
         android:textColor="@color/colorPrimaryDark"
         />
 
-    <EditText
-        android:id="@+id/editTextFirmaAdi"
+    <android.support.design.widget.TextInputLayout
         android:layout_below="@+id/icon"
-        android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Firma Adi"
-        android:paddingBottom="12dp"
-        android:paddingTop="20dp" />
+        android:id="@+id/database_input_FirmaAdi"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-    <EditText
-        android:id="@+id/editTextLatitude"
-        android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editTextFirmaAdi"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Lokasyon Latitude"
-        android:paddingBottom="12dp" />
+        <EditText
+            android:id="@+id/editTextFirmaAdi"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Firma Adi"
+            android:paddingBottom="12dp"
+            android:paddingTop="20dp" />
 
-    <EditText
-        android:id="@+id/editTextLongitude"
-        android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editTextLatitude"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Lokasyon Longitude"
-        android:paddingBottom="12dp" />
+    </android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:id="@+id/editTextKampanyaIcerik"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editTextLongitude"
-        android:ems="10"
-        android:hint="Kampanya Icerik"
-        android:paddingBottom="12dp" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_below="@+id/database_input_FirmaAdi"
+        android:id="@+id/database_input_Latitude"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-    <EditText
-        android:id="@+id/editTextKampanyaSuresi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editTextKampanyaIcerik"
-        android:ems="10"
-        android:hint="Kampanya Suresi"
-        android:paddingBottom="12dp" />
+        <EditText
+            android:id="@+id/editTextLatitude"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Latitude"
+            android:paddingBottom="12dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_below="@+id/database_input_Latitude"
+        android:id="@+id/database_input_Longitude"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/editTextLongitude"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Longitude"
+            android:paddingBottom="12dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_below="@+id/database_input_Longitude"
+        android:id="@+id/database_input_KampanyaIcerik"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/editTextKampanyaIcerik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="Kampanya Icerik"
+            android:paddingBottom="12dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_below="@+id/database_input_KampanyaIcerik"
+        android:id="@+id/database_input_KampanyaSuresi"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/editTextKampanyaSuresi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:ems="10"
+            android:hint="Kampanya Suresi"
+            android:paddingBottom="12dp" />
+
+    </android.support.design.widget.TextInputLayout>
 
     <Spinner
         android:id="@+id/spinnerCategory"
-        android:layout_below="@+id/editTextKampanyaSuresi"
+        android:layout_below="@+id/database_input_KampanyaSuresi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:text="Kategori"
         android:paddingTop="12dp"
+        android:paddingLeft="165dp"
         android:paddingBottom="8dp" />
 
     <TextView
         android:id="@+id/textViewCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextKampanyaSuresi"
-        android:layout_marginTop="0dp"
+        android:layout_below="@+id/database_input_KampanyaSuresi"
         android:ems="10"
-        android:paddingTop="12dp"
+        android:paddingTop="13dp"
         android:paddingBottom="8dp"
-        android:paddingLeft="60dp"
+        android:paddingLeft="100dp"
         android:textStyle="bold"
         android:text="Kategori " />
 
