@@ -82,8 +82,8 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback,
             // startActivity(new Intent(MapActivity.this, FindAdvertisement.class));
             Intent intent = new Intent(MapActivity.this, FindAdvertisement.class);
             Bundle b = new Bundle();
-            b.putDouble("latitude", mLastLocation.getLatitude());
-            b.putDouble("longitude", mLastLocation.getLongitude());
+            b.putString("latitude", String.valueOf(mLastLocation.getLatitude()));
+            b.putString("longitude", String.valueOf(mLastLocation.getLongitude()));
             intent.putExtras(b);
             startActivity(intent);
             finish();

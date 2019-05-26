@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Parcelable;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -35,6 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +60,8 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
 
     private String latitude;
     private String longitude;
+    private String mesafe;
+    private String magaza;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,6 +134,18 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
         }
     }
 
+
+    private void getInfo() {
+        Bundle b = getIntent().getExtras();
+        if (b != null) {
+            latitude = b.getString("latitude");
+            longitude = b.getString("longitude");
+            currentLocation.setLatitude(Double.parseDouble(latitude));
+            currentLocation.setLongitude(Double.parseDouble(longitude));
+            txtLatLong.setText("Latitude: " + latitude + ", Longitude: " + longitude);
+        }
+    }
+
     private void getData() {
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -153,18 +169,19 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
     }
 
     private void getLocation() {
+        String new_lat = input_new_lat.getText().toString().trim();
+        String new_long = input_new_long.getText().toString().trim();
         Bundle b = getIntent().getExtras();
         if (b != null) {
-            latitude = String.valueOf(b.getDouble("latitude"));
-            longitude = String.valueOf(b.getDouble("longitude"));
+            latitude = b.getString("latitude");
+            longitude = b.getString("longitude");
             currentLocation.setLatitude(Double.parseDouble(latitude));
             currentLocation.setLongitude(Double.parseDouble(longitude));
             txtLatLong.setText("Latitude: " + latitude + ", Longitude: " + longitude);
         }
-        if (!TextUtils.isEmpty((CharSequence) input_new_lat) && !TextUtils.isEmpty((CharSequence) input_new_long)) {
-            latitude = String.valueOf(input_new_lat);
-            longitude = String.valueOf(input_new_long);
-            System.out.println(latitude);
+        if (!TextUtils.isEmpty(new_lat) && !TextUtils.isEmpty(new_long)) {
+            latitude = new_lat;
+            longitude = new_long;
             currentLocation.setLatitude(Double.parseDouble(latitude));
             currentLocation.setLongitude(Double.parseDouble(longitude));
         }
@@ -221,10 +238,14 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
                 Snackbar snackBar = Snackbar.make(activity_find_advertisement, "Arama sonucuna gore hicbir reklam bulunamadi.", Snackbar.LENGTH_LONG);
                 snackBar.show();
             } else {
-                /**
-                startActivity(new Intent(this, ListAdvertisement.class));
+                Intent intent = new Intent(FindAdvertisement.this, ListAdvertisement.class);
+                Bundle b = new Bundle();
+                b.putSerializable("results", (Serializable) results);
+                b.putString("latitude", latitude);
+                b.putString("longitude", longitude);
+                intent.putExtras(b);
+                startActivity(intent);
                 finish();
-                 */
             }
         } else {
             Snackbar snackBar = Snackbar.make(activity_find_advertisement, "Lokasyon bilginiz bulunamadi.", Snackbar.LENGTH_LONG);

@@ -1,6 +1,8 @@
 package com.example.advertisementmanagement;
 
-public class Reklam {
+import java.io.Serializable;
+
+public class Reklam implements Serializable {
 
     private String firmaID;
     private String firmaAdi;
@@ -31,6 +33,13 @@ public class Reklam {
         this.kampanyaIcerik = kampanyaIcerik;
         this.kampanyaSuresi = kampanyaSuresi;
         this.kategori = kategori;
+    }
+
+    public Reklam(String firmaAdi, String kategori, String kampanyaIcerik, String kampanyaSuresi) {
+        this.firmaAdi = firmaAdi;
+        this.kategori = kategori;
+        this.kampanyaIcerik = kampanyaIcerik;
+        this.kampanyaSuresi = kampanyaSuresi;
     }
 
     public String getFirmaID() {
