@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:ems="10"
-            android:hint="Mesafe"
+            android:hint="Mesafe (metre)"
             android:inputType="text"
             android:maxLines="1" />
 

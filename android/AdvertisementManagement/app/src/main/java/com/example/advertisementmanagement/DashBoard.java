@@ -62,7 +62,7 @@ public class DashBoard extends AppCompatActivity implements View.OnClickListener
         if(view.getId() == R.id.dashboard_btn_change_pass) {
             if(input_new_password.length() < 6)
             {
-                Snackbar snackBar = Snackbar.make(activity_dashboard, "Sifre uzunlugu 6'dan buyuk olmalidir",Snackbar.LENGTH_LONG);
+                Snackbar snackBar = Snackbar.make(activity_dashboard, "Sifre uzunlugu 6 karakterden buyuk olmalidir",Snackbar.LENGTH_LONG);
                 snackBar.show();
             } else {
                 changePassword(input_new_password.getText().toString());

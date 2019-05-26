@@ -41,7 +41,7 @@ import java.util.List;
 public class FindAdvertisement extends AppCompatActivity implements View.OnClickListener, LocationListener, AdapterView.OnItemSelectedListener {
 
     private TextView txtLatLong, btnBack, txtWelcome;
-    private EditText input_new_lat, input_new_long, reklam_mesafe;
+    private EditText input_new_lat, input_new_long, reklam_mesafe, reklam_firma;
     private Button btnFind, btnGetGPSLocation;
     private RelativeLayout activity_find_advertisement;
     private Spinner spnCategory;
@@ -58,7 +58,6 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
 
     private String latitude;
     private String longitude;
-    private String denemefirmaadi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +69,7 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
         input_new_lat = (EditText) findViewById(R.id.editTextLatitude);
         input_new_long = (EditText) findViewById(R.id.editTextLongitude);
         reklam_mesafe = (EditText) findViewById(R.id.reklam_mesafe);
+        reklam_firma = (EditText) findViewById(R.id.reklam_firma);
         btnGetGPSLocation = (Button) findViewById(R.id.reklam_btn_location);
         btnFind = (Button) findViewById(R.id.reklam_btn_find);
         btnBack = (TextView) findViewById(R.id.reklam_btn_back);
@@ -138,11 +138,10 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
                 List<String> keys = new ArrayList<>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     keys.add(ds.getKey());
-                    Reklam reklam = new Reklam((String) ds.child("firmaAdi").getValue(), (String) ds.child("kampanyaIcerik").getValue(),
-                            (String) ds.child("kampanyaSuresi").getValue(), (String) ds.child("kategori").getValue(),
-                            (String) ds.child("latitude").getValue(), (String) ds.child("longitude").getValue());
+                    Reklam reklam = new Reklam((String) ds.child("firmaAdi").getValue(), (String) ds.child("latitude").getValue(),
+                            (String) ds.child("longitude").getValue(), (String) ds.child("kampanyaIcerik").getValue(),
+                            (String) ds.child("kampanyaSuresi").getValue(), (String) ds.child("kategori").getValue());
                     reklamlar.add(reklam);
-                    denemefirmaadi = (String) ds.child("firmaAdi").getValue();
                 }
             }
 
@@ -173,26 +172,66 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
 
     private void findAd() {
         String mesafe = reklam_mesafe.getText().toString().trim();
+        String magaza = reklam_firma.getText().toString().trim();
         results.clear();
         Location location2 = new Location("");
         if (!TextUtils.isEmpty(latitude) && !TextUtils.isEmpty(longitude)) {
-            if (!TextUtils.isEmpty(mesafe)) {
+            if (!TextUtils.isEmpty(mesafe) && TextUtils.isEmpty(magaza)) {
                 for (Reklam reklam : reklamlar) {
                     location2.setLatitude(Double.parseDouble(reklam.getLatitude()));
                     location2.setLongitude(Double.parseDouble(reklam.getLongitude()));
-                    if (Double.parseDouble(mesafe) >= currentLocation.distanceTo(location2)) {
+                    if (category.equals("Tum kategoriler")) {
+                        if ((Double.parseDouble(mesafe) >= currentLocation.distanceTo(location2))) {
+                            results.add(reklam);
+                        }
+                    } else {
+                        if ((Double.parseDouble(mesafe) >= currentLocation.distanceTo(location2)) && reklam.getKategori().equals(category)) {
+                            results.add(reklam);
+                        }
+                    }
+                }
+            } else if (!TextUtils.isEmpty(mesafe) && !TextUtils.isEmpty(magaza)) {
+                for (Reklam reklam : reklamlar) {
+                    location2.setLatitude(Double.parseDouble(reklam.getLatitude()));
+                    location2.setLongitude(Double.parseDouble(reklam.getLongitude()));
+                    if (category.equals("Tum kategoriler")) {
+                        if ((Double.parseDouble(mesafe) >= currentLocation.distanceTo(location2)) && reklam.getFirmaAdi().equals(magaza)) {
+                            results.add(reklam);
+                        }
+                    } else {
+                        if ((Double.parseDouble(mesafe) >= currentLocation.distanceTo(location2)) && reklam.getFirmaAdi().equals(magaza) && reklam.getKategori().equals(category)) {
+                            results.add(reklam);
+                        }
+                    }
+                }
+            } else if (TextUtils.isEmpty(mesafe) && TextUtils.isEmpty(magaza)) {
+                for (Reklam reklam : reklamlar) {
+                    location2.setLatitude(Double.parseDouble(reklam.getLatitude()));
+                    location2.setLongitude(Double.parseDouble(reklam.getLongitude()));
+                    if (!category.equals("Tum kategoriler")) {
+                        if (reklam.getKategori().equals(category)) {
+                            results.add(reklam);
+                        }
+                    } else {
                         results.add(reklam);
                     }
                 }
-            } else {
-                Snackbar snackBar = Snackbar.make(activity_find_advertisement, "Threshold (mesafe) bilgisini girdikten sonra tekrar deneyiniz.", Snackbar.LENGTH_LONG);
+            }
+            if (results.isEmpty()) {
+                Snackbar snackBar = Snackbar.make(activity_find_advertisement, "Arama sonucuna gore hicbir reklam bulunamadi.", Snackbar.LENGTH_LONG);
                 snackBar.show();
+            } else {
+                /**
+                startActivity(new Intent(this, ListAdvertisement.class));
+                finish();
+                 */
             }
         } else {
-            Snackbar snackBar = Snackbar.make(activity_find_advertisement, "Lokasyon bilgisi bulunamadi.", Snackbar.LENGTH_LONG);
+            Snackbar snackBar = Snackbar.make(activity_find_advertisement, "Lokasyon bilginiz bulunamadi.", Snackbar.LENGTH_LONG);
             snackBar.show();
         }
     }
+
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
