@@ -70,8 +70,8 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
 
         txtWelcome = (TextView) findViewById(R.id.reklam_welcome);
         txtLatLong = (TextView) findViewById(R.id.textViewLocation);
-        input_new_lat = (EditText) findViewById(R.id.editTextLatitude);
-        input_new_long = (EditText) findViewById(R.id.editTextLongitude);
+        input_new_lat = (EditText) findViewById(R.id.reklam_new_lat);
+        input_new_long = (EditText) findViewById(R.id.reklam_new_long);
         reklam_mesafe = (EditText) findViewById(R.id.reklam_mesafe);
         reklam_firma = (EditText) findViewById(R.id.reklam_firma);
         btnGetGPSLocation = (Button) findViewById(R.id.reklam_btn_location);
@@ -116,7 +116,7 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
             txtLatLong.setText("Latitude: " + latitude + ", Longitude: " + longitude);
         }
 
-        getLocation();
+        getInfo();
         getData();
     }
 
