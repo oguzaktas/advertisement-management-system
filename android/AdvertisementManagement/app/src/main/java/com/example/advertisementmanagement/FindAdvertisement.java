@@ -1,6 +1,8 @@
 package com.example.advertisementmanagement;
 
 import android.Manifest;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,6 +14,8 @@ import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -40,6 +44,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.advertisementmanagement.SendNotification.CHANNEL_ID;
+
+/**
+ * Yazilim Laboratuvari II Proje 3
+ * @author Oguz Aktas & Mert Var
+ */
 public class FindAdvertisement extends AppCompatActivity implements View.OnClickListener, LocationListener, AdapterView.OnItemSelectedListener {
 
     private TextView txtLatLong, btnBack, txtWelcome;
@@ -60,8 +70,8 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
 
     private String latitude;
     private String longitude;
-    private String mesafe;
-    private String magaza;
+
+    private NotificationManagerCompat notificationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +128,8 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
 
         getInfo();
         getData();
+
+        notificationManager = NotificationManagerCompat.from(this);
     }
 
     @Override
@@ -128,12 +140,29 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
         } else if (view.getId() == R.id.reklam_btn_find) {
             getLocation();
             findAd();
+            if (!results.isEmpty()) {
+                getNotification();
+            }
         } else if (view.getId() == R.id.reklam_btn_back) {
             startActivity(new Intent(this, DashBoard.class));
             finish();
         }
     }
 
+    private void getNotification() {
+        if (!results.isEmpty()) {
+            for (Reklam reklam : results) {
+                Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+                        .setContentTitle(reklam.getFirmaAdi())
+                        .setContentText(reklam.getKampanyaIcerik())
+                        .setSmallIcon(R.drawable.ic_adb_black_24dp)
+                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                        .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                        .build();
+                notificationManager.notify(results.indexOf(reklam), notification);
+            }
+        }
+    }
 
     private void getInfo() {
         Bundle b = getIntent().getExtras();

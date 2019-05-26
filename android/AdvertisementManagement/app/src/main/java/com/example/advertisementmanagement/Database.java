@@ -17,6 +17,10 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * Yazilim Laboratuvari II Proje 3
+ * @author Oguz Aktas & Mert Var
+ */
 public class Database extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     private EditText editTextFirmaAdi, editTextLatitude, editTextLongitude, editTextKampanyaIcerik, editTextKampanyaSuresi;
@@ -80,6 +84,11 @@ public class Database extends AppCompatActivity implements View.OnClickListener,
 
             Snackbar snackBar = Snackbar.make(activity_database, "Reklam basariyla eklendi.", Snackbar.LENGTH_LONG);
             snackBar.show();
+            editTextLatitude.getText().clear();
+            editTextLongitude.getText().clear();
+            editTextKampanyaIcerik.getText().clear();
+            editTextKampanyaSuresi.getText().clear();
+            editTextFirmaAdi.getText().clear();
         } else {
             Snackbar snackBar = Snackbar.make(activity_database, "Tum alanlari doldurduktan sonra tekrar deneyiniz.", Snackbar.LENGTH_LONG);
             snackBar.show();

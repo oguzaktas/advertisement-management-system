@@ -2,6 +2,10 @@ package com.example.advertisementmanagement;
 
 import java.io.Serializable;
 
+/**
+ * Yazilim Laboratuvari II Proje 3
+ * @author Oguz Aktas & Mert Var
+ */
 public class Reklam implements Serializable {
 
     private String firmaID;

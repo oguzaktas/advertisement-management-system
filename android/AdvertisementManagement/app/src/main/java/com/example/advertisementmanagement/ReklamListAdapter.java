@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/**
+ * Yazilim Laboratuvari II Proje 3
+ * @author Oguz Aktas & Mert Var
+ */
 public class ReklamListAdapter extends ArrayAdapter<Reklam> {
 
     private static final String TAG = "ReklamListAdapter";

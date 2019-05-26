@@ -1,6 +1,9 @@
 package com.example.advertisementmanagement;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +22,10 @@ import com.google.firebase.database.Query;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Yazilim Laboratuvari II Proje 3
+ * @author Oguz Aktas & Mert Var
+ */
 public class ListAdvertisement extends AppCompatActivity implements View.OnClickListener {
 
     private ArrayList<Reklam> results;
@@ -27,6 +34,8 @@ public class ListAdvertisement extends AppCompatActivity implements View.OnClick
 
     private TextView btnBack;
     private ListView listView;
+
+    private static final String CHANNEL_ID = "channel";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,13 @@ public class ListAdvertisement extends AppCompatActivity implements View.OnClick
         listView.setAdapter(adapter);
 
         btnBack.setOnClickListener(this);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Notification Channel", NotificationManager.IMPORTANCE_HIGH);
+            channel.setDescription("This is notification channel");
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
     }
 
     @Override
