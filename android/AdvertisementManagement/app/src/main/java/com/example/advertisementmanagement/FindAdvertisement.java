@@ -227,11 +227,25 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
                     location2.setLatitude(Double.parseDouble(reklam.getLatitude()));
                     location2.setLongitude(Double.parseDouble(reklam.getLongitude()));
                     if (category.equals("Tum kategoriler")) {
-                        if ((Double.parseDouble(mesafe) >= currentLocation.distanceTo(location2))) {
+                        if ((Double.parseDouble(mesafe) <= currentLocation.distanceTo(location2))) {
                             results.add(reklam);
                         }
                     } else {
-                        if ((Double.parseDouble(mesafe) >= currentLocation.distanceTo(location2)) && reklam.getKategori().equals(category)) {
+                        if ((Double.parseDouble(mesafe) <= currentLocation.distanceTo(location2)) && reklam.getKategori().equals(category)) {
+                            results.add(reklam);
+                        }
+                    }
+                }
+            } else if (TextUtils.isEmpty(mesafe) && !TextUtils.isEmpty(magaza)) {
+                for (Reklam reklam : reklamlar) {
+                    location2.setLatitude(Double.parseDouble(reklam.getLatitude()));
+                    location2.setLongitude(Double.parseDouble(reklam.getLongitude()));
+                    if (category.equals("Tum kategoriler")) {
+                        if ((reklam.getFirmaAdi().contains(magaza))) {
+                            results.add(reklam);
+                        }
+                    } else {
+                        if ((reklam.getFirmaAdi().contains(magaza)) && reklam.getKategori().equals(category)) {
                             results.add(reklam);
                         }
                     }
@@ -250,7 +264,8 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
                         }
                     }
                 }
-            } else if (TextUtils.isEmpty(mesafe) && TextUtils.isEmpty(magaza)) {
+            }
+            else if (TextUtils.isEmpty(mesafe) && TextUtils.isEmpty(magaza)) {
                 for (Reklam reklam : reklamlar) {
                     location2.setLatitude(Double.parseDouble(reklam.getLatitude()));
                     location2.setLongitude(Double.parseDouble(reklam.getLongitude()));
