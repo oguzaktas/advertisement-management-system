@@ -241,11 +241,11 @@ public class FindAdvertisement extends AppCompatActivity implements View.OnClick
                     location2.setLatitude(Double.parseDouble(reklam.getLatitude()));
                     location2.setLongitude(Double.parseDouble(reklam.getLongitude()));
                     if (category.equals("Tum kategoriler")) {
-                        if ((Double.parseDouble(mesafe) >= currentLocation.distanceTo(location2)) && reklam.getFirmaAdi().equals(magaza)) {
+                        if ((Double.parseDouble(mesafe) <= currentLocation.distanceTo(location2)) && reklam.getFirmaAdi().equals(magaza)) {
                             results.add(reklam);
                         }
                     } else {
-                        if ((Double.parseDouble(mesafe) >= currentLocation.distanceTo(location2)) && reklam.getFirmaAdi().equals(magaza) && reklam.getKategori().equals(category)) {
+                        if ((Double.parseDouble(mesafe) <= currentLocation.distanceTo(location2)) && reklam.getFirmaAdi().equals(magaza) && reklam.getKategori().equals(category)) {
                             results.add(reklam);
                         }
                     }
