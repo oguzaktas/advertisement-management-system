@@ -33,7 +33,7 @@ Android application by using Google Cloud and Firebase for cloud based GPS track
 
 ## Code Style
 
-This project uses the [Google's Java Style Guide](https://google.github.io/styleguide/javaguide.html#s7.1-javadoc-formatting) as a guideline.
+This project uses the [Google's Java Style Guide](https://google.github.io/styleguide/javaguide.html) as a guideline.
 
 ## Screenshots
 
