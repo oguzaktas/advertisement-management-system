@@ -37,9 +37,9 @@ This project uses the [Google's Java Style Guide](https://google.github.io/style
 
 ## Screenshots
 
-![Screenshot_1556911769_1](https://user-images.githubusercontent.com/29024000/57161575-96258580-6df4-11e9-851a-b3cab6ca2c9b.png) ![Screenshot_1556911775_1](https://user-images.githubusercontent.com/29024000/57161574-96258580-6df4-11e9-9c8e-1d4332763710.png)
+![Screenshot_1558913278](https://user-images.githubusercontent.com/29024000/58522859-c29da900-81ca-11e9-85e3-d4063b610a23.png) ![Screenshot_1558913365](https://user-images.githubusercontent.com/29024000/58522861-c29da900-81ca-11e9-8e11-34021dc57b04.png)
 
-![Screenshot_1556911782_1](https://user-images.githubusercontent.com/29024000/57161573-96258580-6df4-11e9-9a9a-99cabc73ef3c.png) ![Screenshot_1556911787_1](https://user-images.githubusercontent.com/29024000/57161572-958cef00-6df4-11e9-802a-50b8c5ca048b.png)
+![Screenshot_1558913296](https://user-images.githubusercontent.com/29024000/58522860-c29da900-81ca-11e9-94ea-1999d54501ee.png) ![Screenshot_1559079676](https://user-images.githubusercontent.com/29024000/58522862-c3363f80-81ca-11e9-9e14-39948a7ce257.png)
 
 ## Contributors
 
